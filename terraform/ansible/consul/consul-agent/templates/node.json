@@ -1,0 +1,19 @@
+{
+  "service": {
+    "id": "{{ my_instance.instances | map(attribute='tags.Name')| list | join('\n') }}",
+    "name": "{{ my_instance.instances | map(attribute='tags.Name')| list | join('\n') }}",
+    "tags": [
+      "{{ my_instance.instances | map(attribute='tags.Name')| list | join('\n') }}"
+    ],
+    "port": 22,
+    "checks": [
+      {
+        "id": "tcp",
+        "name": "tcp-22",
+        "tcp": "localhost:22",
+        "interval": "30s",
+        "timeout": "20s"
+      }
+    ]
+  }
+}
