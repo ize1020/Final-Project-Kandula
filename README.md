@@ -1,7 +1,4 @@
 # Mid-Project-Kandula
-Mid Project For OpsSchool With Kandula
+Mid Project For OpsSchool
 
-Hello in this module cluster you have:
-1 - module vpc
-2 - eks cluster
-3 - consul service
+## Requirements 
