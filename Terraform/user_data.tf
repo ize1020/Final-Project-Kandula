@@ -436,9 +436,6 @@ git clone https://oauth2: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@github.com/ize
 cd /kandula-app-8
 docker build -t opsschool/kandula .
 
-docker run -it -e FLASK_ENV=development -e AWS_ACCESS_KEY_ID=AKIAYTQZ6DKDXJDKCNOH -e AWS_SECRET_ACCESS_KEY=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 -e AWS_DEFAULT_REGION=us-east-1 --name kandula-app --rm -p 5000:5000 opsschool/kandula
-
-exit 0
 
 USERDATA
 }
