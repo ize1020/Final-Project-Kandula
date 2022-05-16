@@ -1,0 +1,12 @@
+{
+  "advertise_addr": "{{PRIVATE_IP.content}}",
+  "data_dir": "/opt/consul",
+  "datacenter": "isaacE",
+  "encrypt": "uDBV4e+LbFW3019YKPxIrg==",
+  "disable_remote_exec": true,
+  "disable_update_check": true,
+  "leave_on_terminate": true,
+  "retry_join": ["provider=aws tag_key=consul-agent tag_value=true"],
+  "enable_script_checks": true,
+  "server": false
+}

@@ -1,0 +1,137 @@
+---
+- ec2_metadata_facts:
+- ec2_instance_info:
+     instance_ids: '{{ ansible_ec2_instance_id }}'
+     region: '{{ ansible_ec2_placement_region }}'
+  register: my_instance
+  delegate_to: localhost
+- name: Update APT Cache
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+
+- name: Remove apt lock file
+  file:
+    state: absent
+    path: "/var/lib/dpkg/lock"
+
+- name: Install dependencies
+  apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 600
+  loop:
+    - unzip
+    - nginx
+
+- name: resolve config
+  copy:
+      content: "nameserver 127.0.0.1"
+      dest: /etc/resolve.conf
+
+- name: copy resolved.conf
+  copy:
+    src:  consul.conf
+    dest: /etc/systemd/resolved.conf.d/
+
+- name: Prerouting Forward port 53 to 8600
+  iptables:
+    table: nat
+    chain: PREROUTING
+    in_interface: eth0
+    protocol: "{{ item }}"
+    match: "{{ item }}"
+    destination_port: "53"
+    jump: REDIRECT
+    to_ports: "8600"
+    comment: Redirect DNS traffic to port 8600 of consul
+  loop:
+    - tcp
+    - udp
+
+- name: Otput Forward port 53 to 8600
+  iptables:
+    table: nat
+    chain: OUTPUT
+    protocol: "{{ item }}"
+    match: "{{ item }}"
+    destination: localhost
+    destination_port: "53"
+    jump: REDIRECT
+    to_ports: "8600"
+  loop:
+    - tcp
+    - udp
+
+- name: restart systemd-resolved
+  service:
+    name: systemd-resolved
+    state: restarted
+
+- name: Create consul group
+  group:
+    name: "{{ consul_group }}"
+    state: present
+    system: true
+
+- name: Create consul user
+  user:
+    name: "{{ consul_user }}"
+    group: "{{ consul_group }}"
+    state: present
+
+- name: Create consul dir
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ consul_user }}"
+    group: "{{ consul_group }}"
+    mode: 0755
+  with_items:
+    - "{{ consul_basedir }}"
+    - "{{ consul_configdir }}"
+    - "{{ consul_run }}"
+
+- name: Consul | Download and extract Consul
+  unarchive:
+    src: https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip
+    dest:  "{{ consul_bin }}"
+    owner: "{{ consul_user }}"
+    group: "{{ consul_group }}"
+    remote_src: yes
+
+- name: private ip
+  uri:
+    url: http://169.254.169.254/latest/meta-data/local-ipv4
+    return_content: yes
+  register: PRIVATE_IP
+
+- name: config
+  template:
+    src:  config.json
+    dest: /etc/consul.d/config.json
+
+- name: copy node json
+  template:
+    src: node.json
+    dest: /etc/consul.d/node.json
+
+- name: copy consul.service
+  copy: 
+    src: consul.service
+    dest: /etc/systemd/system/
+    
+- name: reload service
+  systemd:
+    daemon-reload: yes
+
+- name: enable consul.service
+  systemd:
+    name: consul
+    enabled: yes
+
+- name: start consul.service
+  systemd:
+    name: consul
+    state: started 
