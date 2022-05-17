@@ -1,6 +1,6 @@
 # Mid-Project-Kandula
 Mid Project For OpsSchool
-![undefined](https://user-images.githubusercontent.com/49163323/168780489-ef305b5a-7243-4f78-845e-d019f39324b6.png)
+![alt text](https://user-images.githubusercontent.com/49163323/168780489-ef305b5a-7243-4f78-845e-d019f39324b6.png)
 
 ## Requirements 
 * AWS admin account
