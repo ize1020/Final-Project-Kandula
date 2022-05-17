@@ -37,6 +37,27 @@ Mid Project For OpsSchool
     * 1 bastion-ansible
     * 1 jenkins master
         * also ALB on the public
+  ## Ansible
+    * install consul server
+    * install consul agent
+    * install Docker
+  ## K8s
+    * secret[not configure yet]
+    * svc[not configure yet]
+    * pod[not configure yet]
+
+### Executing
+* cd to mid-project-Kandula
+* run bash create-config.sh
+    * script will execute:
+     * tf init + tf apply --auto-approve
+     * will create config file for ssh connect
+     * copy needed file to bastion-ansible server
+
+## after the script end connect to bastion to run ansible command:
+  * cd ansible/
+  * ansible-playbook -i hosts  consul/consul_server.yml
+  * ansible-playbook -i hosts  consul/consul_agent.yml
 
 
 
