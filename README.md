@@ -57,8 +57,9 @@ Mid Project For OpsSchool
 
 ## after the script end connect to bastion to run ansible command:
   * cd ansible/
-  * ansible-playbook -i hosts  consul/consul_server.yml
-  * ansible-playbook -i hosts  consul/consul_agent.yml
+  * Ansible-playbook –i hosts –private-key /home/ubuntu/kandula_10.pem consul/consul_setup.yaml
+  * Ansible-playbook –i hosts –private-key /home/ubuntu/kandula_10.pem consul/agent_setup.yaml
+    * when that finish you can go check the dns of the alb and see the consul service.
 
 
 
