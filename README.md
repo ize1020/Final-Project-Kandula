@@ -28,12 +28,12 @@ Mid Project For OpsSchool
 
 ## ect2
 * 8 instances (6 on private 2 on public):
-  # private subnet:
+  ## private subnet:
     * 3 consul server
     * 1 consul agent
     * 2 jenkins node
     * 1 eks cluster
-  # public subnet:
+  ## public subnet:
     * 1 bastion-ansible
     * 1 jenkins master
     * also ALB on the public
