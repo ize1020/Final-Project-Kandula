@@ -45,6 +45,7 @@ Mid Project For OpsSchool
     * secret[not configure yet]
     * svc[not configure yet]
     * pod[not configure yet]
+    * you can see here visual my infra![undefined](https://user-images.githubusercontent.com/49163323/168780077-1eebc065-e6c6-4736-be9a-585dc2688543.png)
 
 ### Executing
 * cd to mid-project-Kandula
