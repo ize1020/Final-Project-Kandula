@@ -8,7 +8,7 @@ Mid Project For OpsSchool
 * Git
 
 ## so lets get start
-* First clone my repo [Mid-proje](https://github.com/ize1020/Mid-Project-Kandula.git)
+* First clone my repo [Mid-project](https://github.com/ize1020/Mid-Project-Kandula.git)
 * Second clone my kandula-app [kandula-app-8](https://github.com/ize1020/kandula-app-8.git)
 
 ## My Infrastructure Include
@@ -36,4 +36,9 @@ Mid Project For OpsSchool
   ## public subnet:
     * 1 bastion-ansible
     * 1 jenkins master
-    * also ALB on the public
+        * also ALB on the public
+
+
+
+
+    
