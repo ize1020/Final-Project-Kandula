@@ -1,5 +1,6 @@
 # Mid-Project-Kandula
 Mid Project For OpsSchool
+![undefined](https://user-images.githubusercontent.com/49163323/168780489-ef305b5a-7243-4f78-845e-d019f39324b6.png)
 
 ## Requirements 
 * AWS admin account
@@ -45,9 +46,6 @@ Mid Project For OpsSchool
     * secret[not configure yet]
     * svc[not configure yet]
     * pod[not configure yet]
-    * you can see here visual my infra:
-#![undefined](https://user-images.githubusercontent.com/49163323/168780307-d2d2e61e-c48c-4a02-8cf9-2737c73d7702.png)
-
 
 ### Executing
 * cd to mid-project-Kandula
