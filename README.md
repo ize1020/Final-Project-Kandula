@@ -55,7 +55,7 @@ Mid Project For OpsSchool
      * will create config file for ssh connect
      * copy needed file to bastion-ansible server
 
-## after the script end connect to bastion to run ansible command:
+## After the script end connect to bastion to run ansible command:
   * cd ansible/
   * Ansible-playbook –i hosts –private-key /home/ubuntu/kandula_10.pem consul/consul_setup.yaml
   * Ansible-playbook –i hosts –private-key /home/ubuntu/kandula_10.pem consul/agent_setup.yaml
