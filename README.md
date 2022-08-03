@@ -32,12 +32,14 @@ Mid Project For OpsSchool
   ## private subnet:
     * 3 consul server
     * 1 consul agent
+    * 1 jenkins master
     * 2 jenkins node
     * 1 eks cluster
+    * 1 prometheus
+    * 1 kibana
   ## public subnet:
     * 1 bastion-ansible
-    * 1 jenkins master
-        * also ALB on the public
+    * ALB
   ## Ansible
     * install consul server
     * install consul agent
@@ -53,13 +55,8 @@ Mid Project For OpsSchool
     * script will execute:
      * tf init + tf apply --auto-approve
      * will create config file for ssh connect
-     * copy needed file to bastion-ansible server
+     * copy and run the needed file to the ec2 private machine.
 
-## After the script end connect to bastion to run ansible command:
-  * cd ansible/
-  * Ansible-playbook –i hosts –private-key /home/ubuntu/kandula_10.pem consul/consul_setup.yaml
-  * Ansible-playbook –i hosts –private-key /home/ubuntu/kandula_10.pem consul/agent_setup.yaml
-    * when that finish you can go check the dns of the alb and see the consul service.
 
 
 
