@@ -1,4 +1,4 @@
-# Mid-Project-Kandula
+# Final-Project-Kandula
 Mid Project For OpsSchool
 ![Final project](https://user-images.githubusercontent.com/49163323/182674332-1c9e4457-cf60-4942-8c79-2586c400d44b.png)
 
