@@ -56,6 +56,7 @@ Mid Project For OpsSchool
      * tf init + tf apply --auto-approve
      * will create config file for ssh connect
      * copy and run the needed file to the ec2 private machine.
+     * i am back
 
 
 
